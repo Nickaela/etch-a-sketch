@@ -1,12 +1,17 @@
 #container {
-    box-sizing: border-box;
-    border: 1px solid red;
-    display: flex;
+    
+    width: 100px;
+    height: 100px;
 }
+#container>div {
+   
+    display: flex;
+    
 
-
-div .a {
-    width: 10px;
-    height: 10px;
-    border: 1px solid black;
+}
+div .box {
+     border: .5px solid green;
+     width: 5px;
+     height: 5px;
+     
 }
