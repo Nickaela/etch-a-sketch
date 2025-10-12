@@ -58,18 +58,9 @@ button.addEventListener("click", () => {
     gridDivs.forEach((g) => g.remove());
 
     let size = prompt("How many squares per side would you like?", "2-100");
-    
-    if (size > 100){
-
-       let size = prompt("Up to 100 per side only");
-    }
-
 
     createRowsOfSquares(size);
-
-    
 
     highlightTheGrids();
 
 });
-
