@@ -1,17 +1,21 @@
-const container = document.querySelector("#container");
 
-const buttonContainer = document.createElement("div");
-container.appendChild(buttonContainer);
+const container = document.querySelector("#container");
+const body = document.querySelector("body");
+
+const buttonDiv = document.createElement("div");
+buttonDiv.setAttribute("id", "forButton");
+body.insertBefore(buttonDiv, container);
 
 const button = document.createElement("button");
 button.textContent = "GRID";
-button.style.marginBottom = "5px";
-buttonContainer.appendChild(button);
+
+buttonDiv.appendChild(button);
 
 
-function createRowOfSquares(num){
+function createRowsOfSquares(num){
     for (let i = 0; i < num; i++){
         const row = document.createElement("div");
+        row.setAttribute("id", "row");
         container.appendChild(row);
 
         for (let j = 0; j < num; j++){
@@ -22,13 +26,15 @@ function createRowOfSquares(num){
     }
 }
 
-createRowOfSquares(16);
+createRowsOfSquares(16);
 
 
-const gridDivs = document.querySelectorAll(".box");
 
+function highlightTheGrids() {
 
-gridDivs.forEach((sq) => {
+const boxes = document.querySelectorAll(".box");
+
+boxes.forEach((sq) => {
 
     sq.addEventListener("mouseenter", (e) => {
     e.target.style.background = "";
@@ -40,8 +46,30 @@ gridDivs.forEach((sq) => {
 
 });
 
+};
+
+highlightTheGrids();
+
 
 button.addEventListener("click", () => {
-    //let num = +prompt("How many squares would you like per side?", "2-100");
+
+    const gridDivs = document.querySelectorAll("#row");
+
+    gridDivs.forEach((g) => g.remove());
+
+    let size = prompt("How many squares per side would you like?", "2-100");
     
+    if (size > 100){
+
+       let size = prompt("Up to 100 per side only");
+    }
+
+
+    createRowsOfSquares(size);
+
+    
+
+    highlightTheGrids();
+
 });
+
