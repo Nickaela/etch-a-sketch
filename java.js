@@ -30,37 +30,53 @@ createRowsOfSquares(16);
 
 
 
+
 function highlightTheGrids() {
 
 const boxes = document.querySelectorAll(".box");
 
+
+
 boxes.forEach((sq) => {
-
     sq.addEventListener("mouseenter", (e) => {
-    e.target.style.background = "";
+    let r = Math.floor(Math.random() * 255);
+    let g = Math.floor(Math.random() * 255);
+    let b = Math.floor(Math.random() * 255);
+    e.target.style.background = `rgb(${r}, ${g}, ${b})`;
 });
-
     sq.addEventListener("mouseleave", (e) => {
-    e.target.style.background = "pink";
+    let r = Math.floor(Math.random() * 255);
+    let g = Math.floor(Math.random() * 255);
+    let b = Math.floor(Math.random() * 255);
+    e.target.style.background = `rgb(${r}, ${g}, ${b})`;
 });
-
 });
 
 };
 
 highlightTheGrids();
 
-
 button.addEventListener("click", () => {
-
     const gridDivs = document.querySelectorAll("#row");
-
     gridDivs.forEach((g) => g.remove());
-
     let size = prompt("How many squares per side would you like?", "2-100");
 
-    createRowsOfSquares(size);
-
-    highlightTheGrids();
-
+    if (size > 100) {
+        askAgain();
+    } else {
+        createRowsOfSquares(size);
+        highlightTheGrids();
+    }
 });
+
+function askAgain(){
+    let num = prompt("Up to 100 only, input another number");
+    if (num <= 100 ) {
+        createRowsOfSquares(num);
+        highlightTheGrids();
+    } else {
+        askAgain();
+
+    }
+}
+
