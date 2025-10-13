@@ -76,7 +76,6 @@ function askAgain(){
         highlightTheGrids();
     } else {
         askAgain();
-
     }
 }
 
